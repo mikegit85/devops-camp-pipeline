@@ -96,6 +96,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deployment stage"
+                //DONE("Lab 8 - Toggles and Release Patterns")
+                sh 'kubectl -n mcox apply -f ./afs-labs-student/kubernetes/config-map.yaml'
                 //DONE("Lab 5 - Deploy to EKS"): deploy docker images
                 sh 'kubectl -n mcox set image deployment/app-deployment app-deployment=$HARBOR_REGISTRY/$HARBOR_PROJECT/$APP_IMAGE_NAME:$COMMIT_HASH-$PIPELINE_HASH'
 //REMOVED everything associated with the database, including environment variables, the DB build stage, the DB deployment stage, etc.
